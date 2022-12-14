@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="刷题笔记 Int *(*ptr )()表示ptr是指向函数的指针，该函数的返回值是指向int型数据的指针 C++中不能建立引用数组和指向引用的指针，也不能建立引用的引用 用Struct代替class的时候成员默认是public的 关于类的大小的说明(待补充)：1.类的大小为类的非静态成员数据的类型大小之和，也就是说静态成员数据不作考虑。2.普通成员函数与sizeof无关。3.虚函数由于要维护在虚函">
+<meta property="og:type" content="website">
+<meta property="og:title" content="C++刷题笔记">
+<meta property="og:url" content="http://example.com/C++%E7%AC%94%E8%AE%B0/C++%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0.html">
+<meta property="og:site_name" content="咋还要起名啊">
+<meta property="og:description" content="刷题笔记 Int *(*ptr )()表示ptr是指向函数的指针，该函数的返回值是指向int型数据的指针 C++中不能建立引用数组和指向引用的指针，也不能建立引用的引用 用Struct代替class的时候成员默认是public的 关于类的大小的说明(待补充)：1.类的大小为类的非静态成员数据的类型大小之和，也就是说静态成员数据不作考虑。2.普通成员函数与sizeof无关。3.虚函数由于要维护在虚函">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-12-14T02:36:50.358Z">
+<meta property="article:modified_time" content="2022-12-14T02:36:50.358Z">
+<meta property="article:author" content="llustc">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/C++%E7%AC%94%E8%AE%B0/C++%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>C++刷题笔记 | 咋还要起名啊
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">咋还要起名啊</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-resources">
+
+    <a href="/resources/" rel="section"><i class="download fa-fw"></i>资源</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">C++刷题笔记
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+          <h2 id="刷题笔记"><a href="#刷题笔记" class="headerlink" title="刷题笔记"></a>刷题笔记</h2><ul>
+<li>Int *(*ptr )()表示ptr是指向函数的指针，该函数的返回值是指向int型数据的指针</li>
+<li>C++中不能建立引用数组和指向引用的指针，也不能建立引用的引用</li>
+<li>用Struct代替class的时候成员默认是public的</li>
+<li>关于类的大小的说明(待补充)：<br>1.类的大小为类的非静态成员数据的类型大小之和，也就是说静态成员数据不作考虑。<br>2.普通成员函数与sizeof无关。<br>3.虚函数由于要维护在虚函数表，所以要占据一个指针大小，也就是4字节。<br>4.类的总大小也遵守类似class字节对齐的，调整规则。</li>
+<li>数组名是一地址常量，数组名之间是不能彼此赋值的</li>
+<li>友元运算符被C++编译器的解释对应：<br>a+b—&gt;operator+(a, b); a.operator+(b)<br>a++—&gt;operator++(a, 0) a.operator++(0)</li>
+<li>引用是给对象取了一个别名，他引入了对象的同义词</li>
+<li><strong>友元函数</strong>是普通函数，不能通过本类的this指针访问；友元函数是另一个类的成员函数，不能通过本类的this指针访问，只能通过另一个类的this指针访问。在C++中友元函数是独立于当前类的外部函数，一个友元函数可以同时定义为两个类的友元函数，友元函数既可以在类的内部，也可以在类的外部定义；在外部定义友元函数时，不必加关键字friend</li>
+<li>一个抽象类并不需要其中所有的方法都是抽象的</li>
+<li>组合和继承都可以的情况下，优先考虑组合</li>
+<li><strong>继承的特点</strong>：<br>1.公有继承的特点是基类的公有成员和保护成员作为派生类的成员时，它们都保持原有的状态，<br>而基类的私有成员仍然是私有的，不能被这个派生类的子类所访问。<br>2.私有继承的特点是基类的公有成员和保护成员都作为派生类的私有成员，并且不能被这个派生    类的子类所访问。<br>3.保护继承的特点是基类的所有公有成员和保护成员都成为派生类的保护成员，并且只能被它的派生类成员函数或友元访问，基类的私有成员仍然是私有的。</li>
+<li>编译器会默认生成析构函数不是必须定义的 没有参数也没有返回值</li>
+<li>模板的使用是为了实现多态性</li>
+<li>运算符优先顺序：赋值运算符&lt;逻辑运算符&lt;关系运算符&lt;算术运算符</li>
+<li>struct成员类型不可以是它自己</li>
+<li>四种cast(C的强制转换不能进行错误检查)：<ul>
+<li>const_cast：const转为非const</li>
+<li>static_const：非const转换为const、向上转换（子类到基类）</li>
+<li>dynamic_const：用于动态类型转换，只能用于含有虚函数的类，只能转指针和引用，可以向上也可以向下</li>
+<li>renterpret_cast：什么都可以转，可能会出现问题</li>
+</ul>
+</li>
+<li>指针和引用的区别：<ul>
+<li>指针有自己的空间，引用只是个别名</li>
+<li>sizeof指针为4， sizeof引用为引用对象的大小</li>
+<li>指针用的时候需要解引用，引用可以直接改变引用对象的值</li>
+<li>指针可以被初始化为NULL，引用必须初始化为已有的对象</li>
+<li>可以有const指针，不能有const引用</li>
+<li>指针使用过程中可以指向其他变量，引用不能改变</li>
+<li>有多级指针，没有多级引用，引用只有一级</li>
+<li>指针++是地址自增，引用++是对象自增</li>
+<li>如果返回动态内存分配的对象或者内存，必须使用指针，使用引用可能会导致内存泄漏</li>
+</ul>
+</li>
+<li>四种智能指针的区别：<ul>
+<li>auto_ptr：存在潜在的内存崩溃问题</li>
+<li>unique_ptr：独占式拥有，同一时间只能有一个智能指针可以指向该对象，避免资源泄漏，使用std::move可以把一个unique指针赋给另一个</li>
+<li>shared_ptr：共享式拥有，多个智能指针可以指向相同对象，该对象和其相关的资源会在最后一个引用被销毁的时候释放</li>
+<li>weak_ptr：不控制对象生命周期，指向一个shared_ptr管理的对象，该对象的内存管理是shared_ptr，weak_ptr是为了防止两个shared_ptr互相引用导致计数器不为0的情况，他的引用不会导致计数器增加，不能通过weak_ptr直接访问对象的方法</li>
+</ul>
+</li>
+<li>数组和指针的区别：<ul>
+<li>数组：保存数据、直接访问数据、通常用于固定数目且数据类型相同的元素、隐式的分配和删除、自身即为数据名</li>
+<li>指针：保存数据地址，间接访问数据，先获取指针指向的地址，再读取该地址的数据、常用于动态的数据结构、通过malloc和free分配释放内存、通常指向匿名数据，操作匿名函数</li>
+</ul>
+</li>
+<li>野指针：指向一个已删除的对象或者未申请访问受限内存区域的指针</li>
+<li>析构函数必须是虚函数，c++默认的析构函数不是虚函数：<ul>
+<li>将可能会被继承的父类的析构函数设置成虚函数，可以保证我们new一个子类，然后使用基类指针指向该子类对象，释放基类指针时可以释放掉子类的空间，防止内存泄漏</li>
+<li>因为虚函数需要虚函数表和虚表指针，占用额外的内存，对于不会被继承的类来说，析构函数是虚函数就会浪费内存，因此C++默认的析构函数不是虚函数，只有需要当作父类的时候，设置为虚函数</li>
+</ul>
+</li>
+<li>函数指针：函数指针是一个指针变量，指向一个具体的函数，可用该指针变量调用函数</li>
+<li>fork函数？</li>
+<li>C++析构函数的作用：<ul>
+<li>析构函数和构造函数对应，命名相同，前面加一个~，对象所在的函数执行完毕时系统会自动执行析构函数</li>
+<li>只有一个析构函数，没有参数也没有返回值，不能重载</li>
+<li>如果没写析构函数，系统会自动生成一个缺省的析构函数，写了系统会合成一个析构函数，先调用写的，再调用合成的</li>
+<li>类中的指针需要先释放再调用析构函数</li>
+<li>类析构的顺序：派生类的析构函数→对象成员析构函数→基类的析构函数</li>
+</ul>
+</li>
+<li>静态函数和虚函数的区别：<ul>
+<li>静态函数在编译的时候确定运行顺序</li>
+<li>虚函数在运行的时候动态绑定，调用的时候会增加一次内存开销，因为用了虚函数表机制</li>
+</ul>
+</li>
+<li>static关键字：<ul>
+<li>加了static关键字的全局变量只能在本文件中使用</li>
+<li>static定义的静态局部变量分配在数据段上，普通的局部变量在栈上</li>
+<li>类中的成员变量和成员函数加了static就没有this指针了，只能通过类名访问</li>
+</ul>
+</li>
+<li>strcpy和strlen的区别：<ul>
+<li>strcpy拷贝到‘\0’结束，没有指定长度可能会越界，安全版本strncpy</li>
+<li>strlen计算到‘\0’的长度</li>
+</ul>
+</li>
+<li>写一个在main()函数执行前运行的函数：</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">__attribute__((constructor))<span class="function"><span class="type">void</span> <span class="title">fun</span><span class="params">()</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>虚函数和多态：<ul>
+<li>多态主要是静态多态和动态多态，静态多态主要是重载，在编译时确定，动态多态是用虚函数机制实现的，在运行时动态绑定</li>
+<li>虚函数：在有虚函数的类中，类的最开始部分是一个虚函数表的指针，表中有虚函数的地址，子类继承父类中的虚函数会将其继承到的虚函数表中的地址替换为重写的函数地址，使用虚函数会增加访问内存开销，降低效率</li>
+</ul>
+</li>
+<li>同时定义两个函数，一个带const，一个不带，这相当于函数重载</li>
+<li>c++函数栈空间的最大值为1M</li>
+<li>c++调用c函数需要extern “C”，因为C语言没有函数重载</li>
+<li>new&#x2F;delete：C++关键字，调用构造函数，返回的指针不用强转<br>malloc&#x2F;free：C语言函数库，必须指明申请的内存空间的大小，对于类类型的对象，不会调用构造函数和析构函数，返回的指针需要强转</li>
+<li>RTTI(Run Time Type Identification)即通过运行时类型识别，程序能够使用基类的指针或引用来检查着这些指针或引用所指的对象的实际派生类型：<ul>
+<li>typeid操作符，返回指针和引用所指的实际类型；</li>
+<li>dynamic_cast操作符，将基类类型的指针或引用安全地转换为其派生类类型的指针或引用。</li>
+</ul>
+</li>
+<li>C++拷贝赋值函数的形参能否进行值传递：不能，如果是这种情况下，调用拷贝构造函数的时候，首先要将实参传递给形参，这个传递的时候又要调用拷贝构造函数，如此循环，无法完成拷贝，栈也会满。</li>
+<li>继承访问权限的关系，无论成员被声明成什么类型，在类的外部，只能通过对象访问成员，并且通过对象只能访问public成员：<ul>
+<li>public公有继承：基类的所有公有成员都会成为派生类的公有成员，受保护成员成为派生类的受保护成员</li>
+<li>private私有继承：基类的所有公有成员都会成为派生类的私有成员，受保护成员成为派生类的私有成员</li>
+<li>protected受保护继承：基类的所有公有成员都会成为派生类的私有成员，受保护成员成为派生类的受保护成员</li>
+</ul>
+</li>
+<li>struct和class的区别：struct的默认继承权限和默认访问权限是public，class的默认继承权限和默认访问权限是private，class还可以定义模板类形参</li>
+<li>左值和右值的概念：<ul>
+<li>左值：能对表达式取地址，或具体的对象和变量，一般指表达式结束后依然存在的持久对象</li>
+<li>右值：不能对表达式取地址，或者是匿名对象，一般指表达式结束就不再存在的临时对象</li>
+</ul>
+</li>
+<li>左值引用和右值引用的区别：<ul>
+<li>左值可以寻址，右值不可以</li>
+<li>左值可以被赋值，右值不可以被赋值，可以用来给左值赋值</li>
+<li>左值可变，右值不可变，用户自定义类型右值引用可以通过成员函数改变</li>
+</ul>
+</li>
+<li>在32位机器上的C++语言中,int类型数据占4个字节,则short类型数据占 2个字节</li>
+<li>子类在内存中占用的字节数 &#x3D; 父类占用字节数 + 自身成员所占的字节数，如果有虚函数，要算上虚函数表指针。</li>
+<li></li>
+<li>new的功能？</li>
+<li>红黑树？</li>
+<li>template模板？</li>
+</ul>
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0"><span class="nav-number">1.</span> <span class="nav-text">刷题笔记</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="llustc"
+      src="/images/mu.jpg">
+  <p class="site-author-name" itemprop="name">llustc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; Thu Oct 20 2022 08:00:00 GMT+0800 (中国标准时间) – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">llustc</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
